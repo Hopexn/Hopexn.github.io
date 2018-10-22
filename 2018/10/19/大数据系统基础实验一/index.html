@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="Chinese, English"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>大数据系统基础实验一 | Hopen's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">大数据系统基础实验一</h1><a id="logo" href="/.">Hopen's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">大数据系统基础实验一</h1><div class="post-meta">Oct 19, 2018</div><div class="post-content"><h3 id="实验一：Linux基础"><a href="#实验一：Linux基础" class="headerlink" title="实验一：Linux基础"></a>实验一：Linux基础</h3><h4 id="一、实验目的和要求"><a href="#一、实验目的和要求" class="headerlink" title="一、实验目的和要求"></a>一、实验目的和要求</h4><ul>
+<li>熟悉各类Linux命令的使用</li>
+</ul>
+<h4 id="二、实验内容和原理"><a href="#二、实验内容和原理" class="headerlink" title="二、实验内容和原理"></a>二、实验内容和原理</h4><ul>
+<li>建立数据集<ul>
+<li>选择自己的数据集</li>
+</ul>
+</li>
+<li>单机Linux实验<ul>
+<li>连接、登录Linux服务器</li>
+<li>使用基本的Linux命令</li>
+<li>对数据集进行统计</li>
+<li>使用阻塞、非阻塞方式执行耗时程序</li>
+<li>使用Office或Matplotlib等工具对数据进行可视化处理（加分项）</li>
+</ul>
+</li>
+<li>多机协调实验<ul>
+<li>实现多机之间ssh免密登录</li>
+<li>自定义一个任务，如在数据及上计算某一参数的最大值、统计所有单词的平均长度等</li>
+<li>尝试在多节点上进行处理，包括如何将资源分配至各个节点、如何协调各个节点的任务、如何整合多个结果等</li>
+<li>对比单节点与多节点上任务的处理速度</li>
+<li>尝试提出一种可以加快多节点处理速度的方法（加分项）</li>
+</ul>
+</li>
+</ul>
+<h4 id="三、实验步骤和结果记录"><a href="#三、实验步骤和结果记录" class="headerlink" title="三、实验步骤和结果记录"></a>三、实验步骤和结果记录</h4><h5 id="3-1-数据集的建立"><a href="#3-1-数据集的建立" class="headerlink" title="3.1 数据集的建立"></a>3.1 数据集的建立</h5><ul>
+<li><p>获取数据集</p>
+<ul>
+<li>从维基百科上下载备份文件，这里选择至2018年10月1日的备份的文章部分。</li>
+<li>下载地址：<a href="https://dumps.wikimedia.org/enwiki/20181001" target="_blank" rel="noopener">https://dumps.wikimedia.org/enwiki/20181001</a></li>
+</ul>
+</li>
+<li><p>预处理</p>
+<ul>
+<li>由于原始数据集过大，为了避免处理时间过程，这里从中截取两个4G数据</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-2-单机Linux实验"><a href="#3-2-单机Linux实验" class="headerlink" title="3.2 单机Linux实验"></a>3.2 单机Linux实验</h5><h6 id="3-2-1-SSH远程登录"><a href="#3-2-1-SSH远程登录" class="headerlink" title="3.2.1 SSH远程登录"></a>3.2.1 SSH远程登录</h6><p>使用ssh 用户名@主机名 实现登录</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<h6 id="3-2-2-常用Linux命令使用"><a href="#3-2-2-常用Linux命令使用" class="headerlink" title="3.2.2 常用Linux命令使用"></a>3.2.2 常用Linux命令使用</h6><ul>
+<li>cat命令使用<br>将数据集前十行内容保存在wc_0-9.txt中</li>
+</ul>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>将数据集第十至二十行保存在wc_10-19.txt中</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>使用cat指令将两文件合并，保存在wc_0-19.txt中</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<ul>
+<li>head、tail命令使用<br>显示文件开始位置内容（默认显示的行数为10）</li>
+</ul>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>使用 -n 参数设置显示的行数，例如使用-n 5只显示前5行</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>tail的用法与head相似，两个指令相结合可以选择查看文件中的任何一行或几行， 例如我们要查看文件10001行至10020行的内容，我们可以用head -n 10020 文件路径 | tail -n 20</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<ul>
+<li>scp命令使用<br>scp命令可以用来传输文件，它使用的协议是SSH协议。<br>首先在本地创建一个helloworld.txt的文件</li>
+</ul>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>从服务器上下载文件到本地，覆盖本地文件</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>我们可以看到，“This is server<del>”</del>出现在了本地的helloworld.txt文件中</p>
+<ul>
+<li>awk指令使用<br>接下来我将使用awk查看服务器用户列表中学号为2018开头的学生的个数。<br>首先，我们了解到linux用户身份信息保存在/etc/passwd中，首先查看/etc/passwd，分析数据格式~~</li>
+</ul>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>我们可以看到用户信息使用’:’进行连接，用户名是第一个, 因此我们可以用-F:设置分隔符为’:’，使用$1拿到用户名<br>接下来过滤一些我们不需要的信息，所有以2018开头的用户名可以用正则表达式 “^2018” 来表示， 因此可以将条件写成 $1 ~ “^2018”<br>我们最终想要的并不是学号，而是学号个数，因此将得到的信息使用wc -l, 统计行数，也就是用户的数目，得到最终结果。<br>最终命令如下，所有以2018开头的用户有85个</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<ul>
+<li>grep指令使用使用<br>grep显示1000~2000行中所有以”dis”开头的单词（显示前10条）</li>
+</ul>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>使用grep过滤掉wc_0-9.txt以t开头的单词   </p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<h6 id="3-2-3-阻塞与非阻塞时间对比"><a href="#3-2-3-阻塞与非阻塞时间对比" class="headerlink" title="3.2.3. 阻塞与非阻塞时间对比"></a>3.2.3. 阻塞与非阻塞时间对比</h6><p>在文件中查找包含”Google”，所用的真实时间8.3秒，用户时间为6.4秒</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>接下来创建shell脚本，重复上面的操作三次</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>此时真实时间25.5秒，用户时间为19.2秒，约为单条指令运行时间的3倍。</p>
+<p>接下来修改脚本，为每个操作后面上 &amp; ，同时使用wait命令等待命令执行结束</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>运行程序后，可以看到用户时间不变，即所耗费的计算资源不变，但是真实时间变为原先的三分之一，因此从用户的角度看程序运行变快了。</p>
+<p>用户时间user time是指程序在多个核上运行时间的和，单位是核时<br>真实时间real time是现实中程序运行过去了多长时间<br>真实时间变短原因是每个操作不再阻塞，而是利用多个处理器核心并行计算。</p>
+<h6 id="3-2-4-数据可视化（加分项）自定义任务：统计文件中每行第一个单词长度的分布"><a href="#3-2-4-数据可视化（加分项）自定义任务：统计文件中每行第一个单词长度的分布" class="headerlink" title="3.2.4 数据可视化（加分项）自定义任务：统计文件中每行第一个单词长度的分布"></a>3.2.4 数据可视化（加分项）自定义任务：统计文件中每行第一个单词长度的分布</h6><p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>可以看到，单词长度主要集中在1~14， 其中长度为3的单词出现的次数最高，约为600万次。</p>
+<h5 id="3-3-多机Linux实验"><a href="#3-3-多机Linux实验" class="headerlink" title="3.3 多机Linux实验"></a>3.3 多机Linux实验</h5><h6 id="3-3-1-多机免密登录"><a href="#3-3-1-多机免密登录" class="headerlink" title="3.3.1 多机免密登录"></a>3.3.1 多机免密登录</h6><p>首先在登录节点设置SSH公钥，实现从本机到服务器的免密登录到本机~/.ssh目录下，没有发现公钥文件，因此在本地使用<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></p>
+<p>生成公钥</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>将~/.ssh/id_rsa.pub公钥文件内容放到服务器端的~/.ssh/authorized_keys</p>
+<p>再次登录无需密码</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>集群内部免密登录（thumm01到thumm02~thumm05）在thumm01中使用ssh-keygen -t rsa生成公钥和私钥</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>将公钥文件复制到thumm02~05的~/.ssh/authorized_keys下</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>再次登录thumm02, 即可免密登录</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<h6 id="3-3-2-自定义任务：获得文件中单词的最大长度"><a href="#3-3-2-自定义任务：获得文件中单词的最大长度" class="headerlink" title="3.3.2 自定义任务：获得文件中单词的最大长度"></a>3.3.2 自定义任务：获得文件中单词的最大长度</h6><p>首先在单机上对该文件进行统计，使用下面的命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'length($1)&amp;gt;mlen&#123;mlen=length($1)&#125; END &#123;print mlen&#125;'</span> wiki.txt</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>得到该文件中最长的单词的长度为100. 在单机上该任务用时125秒，接下来在多台机器上运行，由于有5台机器，因此我们计划将文件划分为5个子文件.<br>首先我们获取文件的行数：</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>文件共包含306587459行，均分为5份，每份约61317492行，接下来使用split指令对文件进行划分，得到5个行数基本相同的文件</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>接下来编写脚本<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash #将本地文件分发到其他节点 </span></span><br><span class="line"><span class="keyword">for</span> ((i=2; i&amp;lt;=5; i++)) </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    file=<span class="string">"part<span class="variable">$i</span>.txt"</span></span><br><span class="line">    target=<span class="string">"thumm0<span class="variable">$i</span>"</span> </span><br><span class="line">    scp <span class="variable">$file</span> <span class="variable">$target</span>:/data/dsjxtjc/2018211009/<span class="variable">$file</span> </span><br><span class="line">    scp script.sh <span class="variable">$target</span>:/data/dsjxtjc/2018211009/script.sh </span><br><span class="line"><span class="keyword">done</span> </span><br><span class="line"><span class="comment">#第一个文件由这台主机处理 </span></span><br><span class="line">awk <span class="string">'length($1)&amp;gt;mlen&#123;mlen=length($1)&#125; END &#123;print mlen&#125;'</span> part1.txt &gt; result1.txt &amp;</span><br><span class="line"><span class="comment">#剩下的文件交由thumm02~05处理 </span></span><br><span class="line"><span class="keyword">for</span> ((i=2; i&amp;lt;=5; i++)) </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    target=<span class="string">"thumm0<span class="variable">$i</span>"</span> </span><br><span class="line">    ssh <span class="variable">$target</span> <span class="string">"sh /data/dsjxtjc/2018211009/script.sh <span class="variable">$i</span>"</span>&amp;</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">wait</span> <span class="comment">#设置障碍，确保前面的任务已做完 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">#获取前面运算的结果 </span></span><br><span class="line">result[1]=`cat result1.txt` <span class="comment">#获取本机的结果 </span></span><br><span class="line"><span class="keyword">for</span> ((i=2; i&amp;lt;=5; i++)) <span class="comment">#获取其他机器上的结果 </span></span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    target=<span class="string">"thumm0<span class="variable">$i</span>"</span> </span><br><span class="line">    scp <span class="variable">$target</span>:/data/dsjxtjc/2018211009/result<span class="variable">$i</span>.txt ./ </span><br><span class="line">    result[<span class="variable">$i</span>]=`cat result<span class="variable">$i</span>.txt` </span><br><span class="line"><span class="keyword">done</span> <span class="comment">#比较各结果，获得单词的最大长度 </span></span><br><span class="line">result_max=0 </span><br><span class="line"><span class="keyword">for</span> ((i=1; i&amp;lt;=5; i++)) </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$&#123;result[$i]&#125;</span> -gt <span class="variable">$result_max</span> ]] </span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        result_max=<span class="variable">$&#123;result[$i]&#125;</span> </span><br><span class="line">    <span class="keyword">fi</span> </span><br><span class="line"><span class="keyword">done</span> <span class="comment">#输出最终结果 echo $result_max</span></span><br></pre></td></tr></table></figure></p>
+<p>实验结果：</p>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>我们可以看到，得到最终的结果与单机一致。</p>
+<h4 id="四、实验结果分析"><a href="#四、实验结果分析" class="headerlink" title="四、实验结果分析"></a>四、实验结果分析</h4><ul>
+<li>单机运行结果</li>
+</ul>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<ul>
+<li>多主机并行结果</li>
+</ul>
+<p><img src="/2018/10/19/大数据系统基础实验一/7F543FC2-E227-4893-88B8-DC427CD64E3B.png" alt=""></p>
+<p>我们可以看到，两种方式得到的最终结果一致。然而，第一种方法用时122s，第二种用时33s，约为第一种的四分之一。这是因为使用了并行的方法，将大的任务划分为小的任务，从而减少真实时间的耗费。虽然第二种比第一种快，但是它们所用的用户时间，即该程序运行所占用CPU时间总和是基本相同的（耗费的计算资源相同）。在这个例子中，第二种并行的加速比约为4，而实际上用了5台机器。这是因为数据的分发以及主从之间协同有一定的开销。</p>
+<p><strong>提出一种加快多节点处理的方法（加分项）</strong></p>
+<p>我们可以看到使用并行可以有效加快任务的处理，然而在前面的例子中，我们并没有充分利用处理器的并行能力。虽然任务在多个节点上并行处理，但在每个节点上任务只用了一个线程，因此若将任务进行更细粒度的划分，每个节点上用多线程进行处理，就能获得更好的性能。</p>
+<h4 id="五、-讨论与心得"><a href="#五、-讨论与心得" class="headerlink" title="五、 讨论与心得"></a>五、 讨论与心得</h4><p>这次实验主要是让我们熟悉Linux下命令行操作的方式以及集群中多机之间的控制。本次实验的难点主要有shell脚本的编写，语法和其它脚本语言很不一样，因此学习成本较高。这次实验，不仅让我对shell命令有了更为深入的了解，也让我学会了集群中多主机的控制方法，使我受益颇丰。</p>
+</div><div class="tags"><a href="/tags/大数据/">大数据</a><a href="/tags/Linux/">Linux</a></div><div class="post-nav"><a class="next" href="/2018/10/19/在没有权限的服务器上zsh编译并配置zsh/">在没有权限的服务器上zsh编译并配置zsh</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"><input type="hidden" name="si" value="http://hopexn.github.io"><input name="tn" type="hidden" value="bds"><input name="cl" type="hidden" value="3"><input name="ct" type="hidden" value="2097152"><input name="s" type="hidden" value="on"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Tips/" style="font-size: 15px;">Tips</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/19/大数据系统基础实验一/">大数据系统基础实验一</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/19/在没有权限的服务器上zsh编译并配置zsh/">在没有权限的服务器上zsh编译并配置zsh</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Hopen's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

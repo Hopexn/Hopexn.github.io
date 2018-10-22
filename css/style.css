@@ -260,7 +260,7 @@ div {
     .post .post-content img {
       max-width: 100%;
       padding: 0.5em 0;
-      margin: auto;
+      margin: 0;
       display: block; }
     .post .post-content ul, .post .post-content ol {
       border-radius: 3px;
