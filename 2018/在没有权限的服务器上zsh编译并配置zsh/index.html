@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Hopen&#39;s Blog">
 <meta property="og:description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加1--prefix=$INSTALLATION参数 这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件">
 <meta property="og:locale" content="Chinese, English">
-<meta property="og:updated_time" content="2018-10-23T05:01:21.151Z">
+<meta property="og:updated_time" content="2018-10-23T05:01:36.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在没有权限的服务器上zsh编译并配置zsh">
 <meta name="twitter:description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加1--prefix=$INSTALLATION参数 这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件">
@@ -364,7 +364,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-10-23 13:01:21" itemprop="dateModified" datetime="2018-10-23T13:01:21+08:00">2018-10-23</time>
+                <time title="Modified: 2018-10-23 13:01:36" itemprop="dateModified" datetime="2018-10-23T13:01:36+08:00">2018-10-23</time>
               
             
           </span>
@@ -443,9 +443,8 @@
 <li><p>虽然编译并安装了ncurses, 但编译zsh的时候依然无法找到(错误信息如下), 可以通过配置环境来解决（第一部分）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">configure: error: &quot;No terminal handling library was found on your system.</span><br><span class="line">This is probably a library called &apos;curses&apos; or &apos;ncurses&apos;.  You may</span><br><span class="line">need to install a package called &apos;curses-devel&apos; or &apos;ncurses-devel&apos; on your</span><br><span class="line">system.&quot;</span><br><span class="line">See `config.log&apos; for more details</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
-<li>最后，如果make install提示错误，忽略即可（虽然报了错，实际上软件已经编译好了）</li>
+<li><p>最后，如果make install提示错误，忽略即可（虽然报了错，实际上软件已经编译好了）</p>
+</li>
 </ul>
 
       
