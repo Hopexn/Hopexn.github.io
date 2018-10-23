@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加–prefix=$INSTALLATION参数这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件  除此之">
+  <meta name="description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加1--prefix=$INSTALLATION参数 这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件">
 <meta name="keywords" content="Tips">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在没有权限的服务器上zsh编译并配置zsh">
 <meta property="og:url" content="http://hopexn.github.io/2018/在没有权限的服务器上zsh编译并配置zsh/index.html">
 <meta property="og:site_name" content="Hopen&#39;s Blog">
-<meta property="og:description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加–prefix=$INSTALLATION参数这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件  除此之">
+<meta property="og:description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加1--prefix=$INSTALLATION参数 这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件">
 <meta property="og:locale" content="Chinese, English">
-<meta property="og:updated_time" content="2018-10-23T03:45:25.974Z">
+<meta property="og:updated_time" content="2018-10-23T05:01:21.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在没有权限的服务器上zsh编译并配置zsh">
-<meta name="twitter:description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加–prefix=$INSTALLATION参数这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件  除此之">
+<meta name="twitter:description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加1--prefix=$INSTALLATION参数 这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件">
 
 
 
@@ -364,7 +364,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-10-23 11:45:25" itemprop="dateModified" datetime="2018-10-23T11:45:25+08:00">2018-10-23</time>
+                <time title="Modified: 2018-10-23 13:01:21" itemprop="dateModified" datetime="2018-10-23T13:01:21+08:00">2018-10-23</time>
               
             
           </span>
@@ -415,8 +415,9 @@
       
 
       
-        <h4 id="问题产生的原因"><a href="#问题产生的原因" class="headerlink" title="问题产生的原因"></a>问题产生的原因</h4><p>由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。</p>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><h5 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1. 环境配置"></a>1. 环境配置</h5><p>为了让软件安装在指定的位置，需要在编译过程中添加–prefix=$INSTALLATION参数<br>这样make install后，编译结果会放在$$INSTALLATION中，其中包括</p>
+        <h1 id="问题产生的原因"><a href="#问题产生的原因" class="headerlink" title="问题产生的原因"></a>问题产生的原因</h1><p>由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1. 环境配置"></a>1. 环境配置</h2><p>为了让软件安装在指定的位置，需要在编译过程中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--prefix=$INSTALLATION参数</span><br></pre></td></tr></table></figure></p>
+<p>这样make install后，编译结果会放在$$INSTALLATION中，其中包括</p>
 <ul>
 <li>bin 二进制文件</li>
 <li>lib 库文件</li>
@@ -427,7 +428,7 @@
 <p>当程序安装好后为了让shell能找到这些程序，我们需要将$INSTALLATION/bin加入到$PATH中，可以使用下面的命令：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"PATH=<span class="variable">$INSTALLATION</span>/bin:<span class="variable">$PATH</span>"</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>这样以后装的软件就都可以直接在终端中调用了~~</p>
-<h5 id="2-依赖配置"><a href="#2-依赖配置" class="headerlink" title="2. 依赖配置"></a>2. 依赖配置</h5><p>zsh编译存在一连串的依赖，关系如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zsh -&gt; autoconf &amp;  ncurses</span><br><span class="line">autoconf -&gt;GNU m4</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-依赖配置"><a href="#2-依赖配置" class="headerlink" title="2. 依赖配置"></a>2. 依赖配置</h2><p>zsh编译存在一连串的依赖，关系如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zsh -&gt; autoconf &amp;  ncurses</span><br><span class="line">autoconf -&gt;GNU m4</span><br></pre></td></tr></table></figure></p>
 <p>因此，可按下面的安装顺序安装依赖软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GNU m4 -&gt; autoconf -&gt; ncurses -&gt;zsh</span><br></pre></td></tr></table></figure></p>
 <p>下面附上下载地址:</p>
 <ul>
@@ -436,14 +437,13 @@
 <li>autoconf: <a href="http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz</a></li>
 <li>zsh: <a href="https://github.com/zsh-users/zsh/archive/zsh-5.6.2.zip" target="_blank" rel="noopener">https://github.com/zsh-users/zsh/archive/zsh-5.6.2.zip</a></li>
 </ul>
-<h5 id="3-遇到的问题"><a href="#3-遇到的问题" class="headerlink" title="3. 遇到的问题"></a>3. 遇到的问题</h5><ul>
+<h2 id="3-遇到的问题"><a href="#3-遇到的问题" class="headerlink" title="3. 遇到的问题"></a>3. 遇到的问题</h2><ul>
 <li><p>6.0版本的m4无法编译，换成6.1版本即可</p>
 </li>
-<li><p>虽然编译并安装了ncurses, 但编译zsh的时候依然无法找到，错误信息如下：</p>
+<li><p>虽然编译并安装了ncurses, 但编译zsh的时候依然无法找到(错误信息如下), 可以通过配置环境来解决（第一部分）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">configure: error: &quot;No terminal handling library was found on your system.</span><br><span class="line">This is probably a library called &apos;curses&apos; or &apos;ncurses&apos;.  You may</span><br><span class="line">need to install a package called &apos;curses-devel&apos; or &apos;ncurses-devel&apos; on your</span><br><span class="line">system.&quot;</span><br><span class="line">See `config.log&apos; for more details</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>可以通过配置环境来解决（第一部分）</p>
 <ul>
 <li>最后，如果make install提示错误，忽略即可（虽然报了错，实际上软件已经编译好了）</li>
 </ul>
@@ -630,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题产生的原因"><span class="nav-text">问题产生的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案"><span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-环境配置"><span class="nav-text">1. 环境配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-依赖配置"><span class="nav-text">2. 依赖配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-遇到的问题"><span class="nav-text">3. 遇到的问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题产生的原因"><span class="nav-text">问题产生的原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-环境配置"><span class="nav-text">1. 环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-依赖配置"><span class="nav-text">2. 依赖配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-遇到的问题"><span class="nav-text">3. 遇到的问题</span></a></li></ol></li></ol></div>
             
 
           </div>
