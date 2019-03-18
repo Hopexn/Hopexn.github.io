@@ -108,25 +108,28 @@
 
 
 
-  <meta name="description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加—prefix=$INSTALLATION参数这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件  除此之">
-<meta name="keywords" content="Tips">
+  <meta name="description" content="摘要： 在机器学习中，集成学习的方法是提高模型表现力的一种常用方法，它通过在同一个数据集上训练多个模型并将这些模型的结果综合起来进行预测与分类。然而，集成学习的方法产生的模型巨大，需要消耗大量的计算资源，不利于部署。对于上述的问题，一种解决方案是使用知识蒸馏，将大而笨重的模型中的知识转移到小模型上。  1. 背景介绍在机器学习中，训练与部署的目标并不相同，训练的目标是从数据集的大量冗余信息中提取出">
+<meta name="keywords" content="知识蒸馏">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在没有权限的服务器上zsh编译并配置zsh">
-<meta property="og:url" content="http://hopexn.github.io/2018/在没有权限的服务器上zsh编译并配置zsh/index.html">
+<meta property="og:title" content="Distilling the Knowledge in a Nerual Network阅读笔记">
+<meta property="og:url" content="http://hopexn.github.io/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/index.html">
 <meta property="og:site_name" content="Hopen&#39;s Blog">
-<meta property="og:description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加—prefix=$INSTALLATION参数这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件  除此之">
+<meta property="og:description" content="摘要： 在机器学习中，集成学习的方法是提高模型表现力的一种常用方法，它通过在同一个数据集上训练多个模型并将这些模型的结果综合起来进行预测与分类。然而，集成学习的方法产生的模型巨大，需要消耗大量的计算资源，不利于部署。对于上述的问题，一种解决方案是使用知识蒸馏，将大而笨重的模型中的知识转移到小模型上。  1. 背景介绍在机器学习中，训练与部署的目标并不相同，训练的目标是从数据集的大量冗余信息中提取出">
 <meta property="og:locale" content="Chinese, English">
-<meta property="og:updated_time" content="2019-03-18T13:52:53.000Z">
+<meta property="og:image" content="http://hopexn.github.io/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/E31A4DA2-4EF7-4C2C-A50B-6FEAB37F6627.jpg">
+<meta property="og:image" content="http://hopexn.github.io/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/1552915299546.jpg">
+<meta property="og:updated_time" content="2019-03-18T14:43:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在没有权限的服务器上zsh编译并配置zsh">
-<meta name="twitter:description" content="问题产生的原因由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。 解决方案1. 环境配置为了让软件安装在指定的位置，需要在编译过程中添加—prefix=$INSTALLATION参数这样make install后，编译结果会放在$$INSTALLATION中，其中包括  bin 二进制文件 lib 库文件 share 共享文件 include 头文件  除此之">
+<meta name="twitter:title" content="Distilling the Knowledge in a Nerual Network阅读笔记">
+<meta name="twitter:description" content="摘要： 在机器学习中，集成学习的方法是提高模型表现力的一种常用方法，它通过在同一个数据集上训练多个模型并将这些模型的结果综合起来进行预测与分类。然而，集成学习的方法产生的模型巨大，需要消耗大量的计算资源，不利于部署。对于上述的问题，一种解决方案是使用知识蒸馏，将大而笨重的模型中的知识转移到小模型上。  1. 背景介绍在机器学习中，训练与部署的目标并不相同，训练的目标是从数据集的大量冗余信息中提取出">
+<meta name="twitter:image" content="http://hopexn.github.io/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/E31A4DA2-4EF7-4C2C-A50B-6FEAB37F6627.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://hopexn.github.io/2018/在没有权限的服务器上zsh编译并配置zsh/">
+  <link rel="canonical" href="http://hopexn.github.io/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/">
 
 
 
@@ -136,7 +139,7 @@
   };
 </script>
 
-  <title>在没有权限的服务器上zsh编译并配置zsh | Hopen's Blog</title>
+  <title>Distilling the Knowledge in a Nerual Network阅读笔记 | Hopen's Blog</title>
   
 
 
@@ -305,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hopexn.github.io/2018/在没有权限的服务器上zsh编译并配置zsh/">
+    <link itemprop="mainEntityOfPage" href="http://hopexn.github.io/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hopen">
@@ -322,7 +325,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">在没有权限的服务器上zsh编译并配置zsh
+          <h2 class="post-title" itemprop="name headline">Distilling the Knowledge in a Nerual Network阅读笔记
               
             
           </h2>
@@ -347,24 +350,12 @@
                 
               
 
-              <time title="Created: 2018-10-19 17:10:49" itemprop="dateCreated datePublished" datetime="2018-10-19T17:10:49+08:00">2018-10-19</time>
+              <time title="Created: 2019-03-18 22:10:49 / Modified: 22:43:07" itemprop="dateCreated datePublished" datetime="2019-03-18T22:10:49+08:00">2019-03-18</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-18 21:52:53" itemprop="dateModified" datetime="2019-03-18T21:52:53+08:00">2019-03-18</time>
               
             
           </span>
@@ -381,7 +372,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/小技巧/" itemprop="url" rel="index"><span itemprop="name">小技巧</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/论文阅读/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a></span>
 
                 
                 
@@ -415,38 +406,20 @@
       
 
       
-        <h4 id="问题产生的原因"><a href="#问题产生的原因" class="headerlink" title="问题产生的原因"></a>问题产生的原因</h4><p>由于服务器上没有root权限，因此没有办法用apt来安装软件，软件需要自己下载源码编译。</p>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><h5 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1. 环境配置"></a>1. 环境配置</h5><p>为了让软件安装在指定的位置，需要在编译过程中添加—prefix=$INSTALLATION参数<br>这样make install后，编译结果会放在$$INSTALLATION中，其中包括</p>
-<ul>
-<li>bin 二进制文件</li>
-<li>lib 库文件</li>
-<li>share 共享文件</li>
-<li>include 头文件</li>
-</ul>
-<p>除此之外，为了让配置程序知道这些位置，我们需要使用下面的语句：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CPPFLAGS=<span class="string">"-I<span class="variable">$INSTALLATION</span>/include"</span> LDFLAGS=<span class="string">"-L<span class="variable">$INSTALLATION</span>/lib"</span></span><br></pre></td></tr></table></figure></p>
-<p>当程序安装好后为了让shell能找到这些程序，我们需要将$INSTALLATION/bin加入到$PATH中，可以使用下面的命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"PATH=<span class="variable">$INSTALLATION</span>/bin:<span class="variable">$PATH</span>"</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>这样以后装的软件就都可以直接在终端中调用了~~</p>
-<h5 id="2-依赖配置"><a href="#2-依赖配置" class="headerlink" title="2. 依赖配置"></a>2. 依赖配置</h5><p>zsh编译存在一连串的依赖，关系如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zsh -&gt; autoconf &amp;  ncurses</span><br><span class="line">autoconf -&gt;GNU m4</span><br></pre></td></tr></table></figure></p>
-<p>因此，可按下面的安装顺序安装依赖软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GNU m4 -&gt; autoconf -&gt; ncurses -&gt;zsh</span><br></pre></td></tr></table></figure></p>
-<p>下面附上下载地址:</p>
-<ul>
-<li>ncurse: <a href="https://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz" target="_blank" rel="noopener">https://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz</a></li>
-<li>m4: <a href="https://ftp.gnu.org/gnu/m4/m4-latest.tar.xz" target="_blank" rel="noopener">https://ftp.gnu.org/gnu/m4/m4-latest.tar.xz</a></li>
-<li>autoconf: <a href="http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz</a></li>
-<li>zsh: <a href="https://github.com/zsh-users/zsh/archive/zsh-5.6.2.zip" target="_blank" rel="noopener">https://github.com/zsh-users/zsh/archive/zsh-5.6.2.zip</a></li>
-</ul>
-<h5 id="3-遇到的问题"><a href="#3-遇到的问题" class="headerlink" title="3. 遇到的问题"></a>3. 遇到的问题</h5><ul>
-<li><p>6.0版本的m4无法编译，换成6.1版本即可</p>
-</li>
-<li><p>虽然编译并安装了ncurses, 但编译zsh的时候依然无法找到，错误信息如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">configure: error: &quot;No terminal handling library was found on your system.</span><br><span class="line">This is probably a library called &apos;curses&apos; or &apos;ncurses&apos;.  You may</span><br><span class="line">need to install a package called &apos;curses-devel&apos; or &apos;ncurses-devel&apos; on your</span><br><span class="line">system.&quot;</span><br><span class="line">See `config.log&apos; for more details</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>可以通过配置环境来解决（第一部分）</p>
-<ul>
-<li>最后，如果make install提示错误，忽略即可（虽然报了错，实际上软件已经编译好了）</li>
-</ul>
+        <p><strong>摘要：</strong> 在机器学习中，集成学习的方法是提高模型表现力的一种常用方法，它通过在同一个数据集上训练多个模型并将这些模型的结果综合起来进行预测与分类。然而，集成学习的方法产生的模型巨大，需要消耗大量的计算资源，不利于部署。对于上述的问题，一种解决方案是使用知识蒸馏，将大而笨重的模型中的知识转移到小模型上。</p>
+<hr>
+<h2 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1. 背景介绍"></a>1. 背景介绍</h2><p>在机器学习中，训练与部署的目标并不相同，训练的目标是从数据集的大量冗余信息中提取出有效信息，部署则是将训练好的模型分发给用户使用。为了尽可能地从数据集中提取有效信息，训练可以不计算力与存储的成本，得到一个效果尽可能好的模型。然而，这种方法训练出来的模型常常是笨拙的，并且它们在使用过程中需要消耗大量算力，不利于部署。</p>
+<p>对此，我们需要将大模型压缩成利于部署的小模型。我们可以从大模型中提取出可用信息，将其存放在小模型中，这种方法我们称之为“知识蒸馏”。为了获取大模型的泛化能力，小模型在训练过程中可以利用大模型产生的每个类别的概率作为“软目标”。相较于硬目标（样本标签），软目标含有更多有效的信息，例如一张马的图片的输入产生的软目标不仅包含该图片是马的概率，同时也包含着其他类别的概率，这些概率在一定程度上可以表示不同类别之间的相似程度，例如与汽车相比，驴与马更像，因此在软目标中驴这一分类的概率应该大于汽车的概率。使用软目标用于小模型中梯度的计算可以让小模型获得大模型相近的泛化能力。此外，在训练过程中可以设置较大的学习率，显著提高训练的速度。</p>
+<p><img src="/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/E31A4DA2-4EF7-4C2C-A50B-6FEAB37F6627.jpg" alt=""></p>
+<hr>
+<h2 id="2-知识蒸馏原理"><a href="#2-知识蒸馏原理" class="headerlink" title="2. 知识蒸馏原理"></a>2. 知识蒸馏原理</h2><p>在神经网络中，输出层将每个类别的“分对数”通过softmax转化为概率。</p>
+<p>下面是添加温度T后梯度的计算：</p>
+<script type="math/tex; mode=display">q_i = \frac{e^{z_i/T}}{\sum_{j} e^{z_j/T}}</script><script type="math/tex; mode=display">\frac{\partial C}{\partial z_i} = \frac{1}{T}(q_i - p_i) = \frac{1}{T} (\frac{e^{z_i / T}}{\sum_j{e^{z_j / T}}} - \frac{e^{v_i / T}}{\sum_j{e^{v_j / T}}})</script><script type="math/tex; mode=display">\frac{\partial C}{\partial z_i} \approx \frac{1}{T} (\frac{1 + z_i / T}{N + \sum_j z_j / T} - \frac{1 + v_i / T}{N + \sum_j v_j / T})</script><script type="math/tex; mode=display">\frac{\partial C}{\partial z_i} \approx \frac{1}{NT^2}(z_i - v_i)</script><p>其中T表示温度，温度越高，各类别的概率分布越平缓。</p>
+<p>为了将大模型中的数据迁移到小模型中，最简单的方法就是将温度T设得很高，然后每次训练将大模型输出的概率结果作为软目标用于小模型的训练中。当训练结束后，在使用模型时，再将温度T设置为1。</p>
+<p>另一种方法则是使用两个目标，硬目标与软目标。硬目标是训练样本的标签，软目标则是训练好的大模型的概率输出。该方法将硬目标与软目标通过一定的比例混合，得到混合目标结果，并以此计算loss。在混合过程中，硬目标的权重较低时模型的效果较好。</p>
+<p><img src="/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/1552915299546.jpg" alt=""></p>
+<p>//TODO</p>
+<h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p>[1] Hinton, Geoffrey, Oriol Vinyals, and Jeff Dean. “Distilling the knowledge in a neural network.” arXiv preprint arXiv:1503.02531 (2015).<br>[2] 如何理解soft target这一做法？ - YJango的回答 - 知乎 <a href="https://www.zhihu.com/question/50519680/answer/136406661" target="_blank" rel="noopener">https://www.zhihu.com/question/50519680/answer/136406661</a></p>
 
       
     </div>
@@ -467,7 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tips/" rel="tag"># Tips</a>
+            <a href="/tags/知识蒸馏/" rel="tag"># 知识蒸馏</a>
           
         </div>
       
@@ -480,15 +453,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/大数据系统基础实验四/" rel="next" title="大数据系统基础 实验四">
+                <i class="fa fa-chevron-left"></i> 大数据系统基础 实验四
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/大数据系统基础实验一/" rel="prev" title="大数据系统基础实验一">
-                大数据系统基础实验一 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -636,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题产生的原因"><span class="nav-text">问题产生的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案"><span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-环境配置"><span class="nav-text">1. 环境配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-依赖配置"><span class="nav-text">2. 依赖配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-遇到的问题"><span class="nav-text">3. 遇到的问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-背景介绍"><span class="nav-text">1. 背景介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-知识蒸馏原理"><span class="nav-text">2. 知识蒸馏原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献："><span class="nav-text">参考文献：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -828,6 +801,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
