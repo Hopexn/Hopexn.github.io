@@ -108,20 +108,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hopen&#39;s Blog">
-<meta property="og:url" content="http://hopexn.github.io/categories/论文阅读/index.html">
+  <meta name="description" content="一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;JupyterNotebook作为一个Python开发神器，我们可以通过Web端远程编写与调试程序。然而，一些服务器被部署在局域网中，它们往往只开放了ssh的端口用于访问，其他程序的端口却因NAT而被阻断。因此，若要在这种服务器上使用JupyterNotebook就需要做端口映">
+<meta name="keywords" content="Tips">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH端口代理技巧">
+<meta property="og:url" content="http://hopexn.github.io/2019/SSH端口代理技巧/index.html">
 <meta property="og:site_name" content="Hopen&#39;s Blog">
+<meta property="og:description" content="一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;JupyterNotebook作为一个Python开发神器，我们可以通过Web端远程编写与调试程序。然而，一些服务器被部署在局域网中，它们往往只开放了ssh的端口用于访问，其他程序的端口却因NAT而被阻断。因此，若要在这种服务器上使用JupyterNotebook就需要做端口映">
 <meta property="og:locale" content="Chinese, English">
+<meta property="og:updated_time" content="2019-03-21T06:19:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hopen&#39;s Blog">
+<meta name="twitter:title" content="SSH端口代理技巧">
+<meta name="twitter:description" content="一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;JupyterNotebook作为一个Python开发神器，我们可以通过Web端远程编写与调试程序。然而，一些服务器被部署在局域网中，它们往往只开放了ssh的端口用于访问，其他程序的端口却因NAT而被阻断。因此，若要在这种服务器上使用JupyterNotebook就需要做端口映">
 
 
 
 
 
 
-  <link rel="canonical" href="http://hopexn.github.io/categories/论文阅读/">
+  <link rel="canonical" href="http://hopexn.github.io/2019/SSH端口代理技巧/">
 
 
 
@@ -131,7 +136,7 @@
   };
 </script>
 
-  <title>Category: 论文阅读 | Hopen's Blog</title>
+  <title>SSH端口代理技巧 | Hopen's Blog</title>
   
 
 
@@ -178,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -239,7 +244,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
   </li>
@@ -280,83 +285,189 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>论文阅读<small>Category</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hopexn.github.io/2019/SSH端口代理技巧/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hopen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hopen's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/" itemprop="url">
-              
-                <span itemprop="name">Distilling the Knowledge in a Nerual Network阅读笔记</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">SSH端口代理技巧
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-18T22:10:49+08:00" content="2019-03-18">
-          03-18
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-21 14:05:45 / Modified: 14:19:08" itemprop="dateCreated datePublished" datetime="2019-03-21T14:05:45+08:00">2019-03-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题"><a href="#一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题" class="headerlink" title="一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题"></a>一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;JupyterNotebook作为一个Python开发神器，我们可以通过Web端远程编写与调试程序。然而，一些服务器被部署在局域网中，它们往往只开放了ssh的端口用于访问，其他程序的端口却因NAT而被阻断。因此，若要在这种服务器上使用JupyterNotebook就需要做端口映射，将远程的JupyterNotebook端口映射到本地。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;因为服务器的SSH端口是可以访问的，因此可以使用SSH进行端口映射。SSH的端口映射分为三种，第一种是将服务器的端口映射到本地，第二种是将本地的端口映射到服务器，第三种则是将本地端口监听的流量转发到服务器。这三种端口映射都有其各自的用处，这里用到第一种。</p>
+<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><p>首先在服务器端使用命令开启JupyterNotebook，这里让它在后台运行:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup jupyter notebook &amp;</span><br></pre></td></tr></table></figure>
+<p>JupyterNotebook就会监听8888端口（若要更改监听端口，可以修改用户目录下~/.jupyter/jupyter_notebook_config.py文件）。</p>
+<p>接下来，退出并重新连接ssh:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p &lt;ssh_port&gt; &lt;username&gt;@&lt;server_ip&gt; -L &lt;local_port&gt;:localhost:&lt;server_port&gt;</span><br></pre></td></tr></table></figure>
+<p>例如, 若ssh端口是8000, 我们要将服务器的4567端口映射到本地，可以用下面的命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 8000 hopen@mmlab -L 4567:localhost:4567</span><br></pre></td></tr></table></figure>
+<p>连接上后，通过<a href="http://localhost:4567即可访问远程的JupyterNotebook了" target="_blank" rel="noopener">http://localhost:4567即可访问远程的JupyterNotebook了</a></p>
+<h2 id="二、服务器端网络加速"><a href="#二、服务器端网络加速" class="headerlink" title="二、服务器端网络加速"></a>二、服务器端网络加速</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;作为研究生，大家平时学习与科研需要常常访问国外的网站，都会自备梯子加速。有的时候，我们在服务器端运行程序时需要从国外网站下载一些数据集，若没有梯子加速，速度会非常感人。然而，在服务器上撘一个梯子太麻烦，我们并不需要所有服务器的流量都走代理，而是只希望要用的时候开启。这里，可以使用ssh将本地的代理的端口映射到服务器，让服务器的流量通过ssh转到本地，在通过梯子连接到国外。</p>
+<h3 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h3><p>首先在ssh连接时开启端口映射，添加-R参数</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p &lt;ssh_port&gt; &lt;username&gt;@&lt;server_ip&gt; -R &lt;server_port&gt;:localhost:&lt;local_port&gt;</span><br></pre></td></tr></table></figure>
+<p>我用的梯子是Shadowsocks, 本地监听的端口为1087, 因此需要1087端口映射到服务器：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 8000 hopen@mmlab -R 1087:localhost:1087</span><br></pre></td></tr></table></figure></p>
+<p>接着在服务器终端设置HTTP_PROXY、HTTP_PROXY环境变量</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:1087;    <span class="comment">#HTTP</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:1087;   <span class="comment">#HTTPS</span></span><br></pre></td></tr></table></figure>
+<p>这样服务器终端中运行的程序的所有HTTP、HTTPS流量都会经由本地的梯子转到国外了。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tips/" rel="tag"># Tips</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/ssh端口映射解决JupyterNotebook因NAT无法访问的问题/" rel="next" title="ssh端口映射解决JupyterNotebook因NAT无法访问的问题">
+                <i class="fa fa-chevron-left"></i> ssh端口映射解决JupyterNotebook因NAT无法访问的问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -377,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -463,6 +583,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题"><span class="nav-text">一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤："><span class="nav-text">步骤：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、服务器端网络加速"><span class="nav-text">二、服务器端网络加速</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤：-1"><span class="nav-text">步骤：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -604,6 +740,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
