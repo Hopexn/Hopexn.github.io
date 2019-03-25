@@ -120,7 +120,7 @@
 <meta property="og:image" content="http://hopexn.github.io/2019/强化学习总结/A5889761-76B1-41F9-BA85-D24667B330C9.png">
 <meta property="og:image" content="http://hopexn.github.io/2019/强化学习总结/1B69E559-0C65-4605-AD6A-D729C74AD155.png">
 <meta property="og:image" content="http://hopexn.github.io/2019/强化学习总结/86F9B82B-1EE0-45AF-9B15-CA8C800B8683.png">
-<meta property="og:updated_time" content="2019-03-25T07:13:30.000Z">
+<meta property="og:updated_time" content="2019-03-25T07:16:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="强化学习笔记">
 <meta name="twitter:description" content="1. 马尔科夫过程马尔可夫性：已知当前的状态，过去与未来无关。公式表示：$P(S_{t+1} | S_{t}) = P(S_{t+1} | S_{t}, S_{t-1}, …, S_{1})$ 马尔可夫过程分类：  马尔可夫奖励过程（MRP） 表示为{S, P, R, $\gamma$}   马尔可夫决策过程（MDP） {S, A, P, R, $\gamma$}     其中S是状态的集合， A">
@@ -352,7 +352,7 @@
                 
               
 
-              <time title="Created: 2019-03-25 15:04:31 / Modified: 15:13:30" itemprop="dateCreated datePublished" datetime="2019-03-25T15:04:31+08:00">2019-03-25</time>
+              <time title="Created: 2019-03-25 15:04:31 / Modified: 15:16:00" itemprop="dateCreated datePublished" datetime="2019-03-25T15:04:31+08:00">2019-03-25</time>
             
 
             
@@ -474,8 +474,8 @@ v &= R + \gamma P v \\
 <script type="math/tex; mode=display">q_{\pi}(s, a) = R_{s}^{a} + \gamma \sum_{s^{'} \in S} P_{ss^{'}}^a v_{\pi}(s^{'})</script><p>Q值函数代入状态值函数中：</p>
 <script type="math/tex; mode=display">v_{\pi}(s) =  \sum_{a \in A} \pi(a|s) \left (R_{s}^{a} + \gamma \sum_{s^{'} \in S} P_{ss^{'}}^a v_{\pi}(s^{'}) \right )</script><p>状态值函数代入Q值函数中：</p>
 <script type="math/tex; mode=display">q_{\pi}(s, a) = R_{s}^{a} + \gamma \sum_{s^{'} \in S} P_{ss^{'}}^a   \sum_{a^{'} \in A} \pi(a^{'}|s^{'}) q_{\pi}(s^{'}, a^{'})</script><p>矩阵表示： </p>
-<script type="math/tex; mode=display">v^{\pi} = R{\pi}} + \gamma P^{\pi} v{\pi}}</script><p>变换:</p>
-<script type="math/tex; mode=display">v{\pi}} = (I - \gamma P{\pi}})^{-1} R{\pi}}</script><p>寻找最优的值函数：<br><img src="/2019/强化学习总结/1B69E559-0C65-4605-AD6A-D729C74AD155.png" alt="14ef6bdb0d7e7aecd6c7044496d7ed51"><br><img src="/2019/强化学习总结/86F9B82B-1EE0-45AF-9B15-CA8C800B8683.png" alt="6db938239e558d5a35c60becd7eaa19a"></p>
+<script type="math/tex; mode=display">v^{\pi} = R^{\pi} + \gamma P^{\pi} v^{\pi}</script><p>变换:</p>
+<script type="math/tex; mode=display">v^{\pi} = (I - \gamma P{\pi})^{-1} R^{\pi}</script><p>寻找最优的值函数：<br><img src="/2019/强化学习总结/1B69E559-0C65-4605-AD6A-D729C74AD155.png" alt="14ef6bdb0d7e7aecd6c7044496d7ed51"><br><img src="/2019/强化学习总结/86F9B82B-1EE0-45AF-9B15-CA8C800B8683.png" alt="6db938239e558d5a35c60becd7eaa19a"></p>
 <script type="math/tex; mode=display">v_{*}(s) = \max_a  q_{*}(s, a)</script><script type="math/tex; mode=display">q_{*}(s, a) = R_{s}^{a} + \gamma \sum_{s^{'} \in S} P_{ss^{'}}^{a} v_{*}(s^{'})</script><script type="math/tex; mode=display">v_{*}(s) = \max_a R_s^a + \gamma \sum_{s^{'} \in S} P_{ss^{'}}^{a} v_{*}(s^{'})</script><p>贝尔曼最优等式是非线性的，不一定收敛，可以使用迭代的方法求其最优值：</p>
 <ul>
 <li>Value Iteration</li>
