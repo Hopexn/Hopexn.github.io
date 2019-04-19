@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://hopexn.github.io/2019/数据可视化课设一：中国美展图片相似度检测/949FF918-A76F-442A-BC9F-30B94BD7B6C0.png">
 <meta property="og:image" content="http://hopexn.github.io/2019/数据可视化课设一：中国美展图片相似度检测/0E7F7CA6-5C74-4D1E-9B10-A84751B17815.png">
 <meta property="og:image" content="http://hopexn.github.io/2019/数据可视化课设一：中国美展图片相似度检测/BCC73844-408E-4466-A048-A5A92C34350F.png">
-<meta property="og:updated_time" content="2019-04-19T10:00:02.963Z">
+<meta property="og:updated_time" content="2019-04-19T16:13:13.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据可视化课设一：中国美展图片相似度检测">
 <meta name="twitter:description" content="1. 背景介绍不久前新闻报道著名画家叶永青抄袭意大利画家的作品，对于抄袭这种做法，我是深恶痛绝的，刚好这次课程设计老师也提供了中国美展的数据集，我主要用到这个数据集里面的一个图像的信息。本文主要从神经风格迁移的原理和如何将神经风格迁移应用到图片相似度检测这两个方面进行介绍。 2. 神经风格迁移神经风格迁移是leonGatys等人在2015年提出的，它能将一张图片的风格转移到另一张图片之中。神经风格">
@@ -360,12 +360,24 @@
                 
               
 
-              <time title="Created: 2019-04-19 12:26:35 / Modified: 18:00:02" itemprop="dateCreated datePublished" datetime="2019-04-19T12:26:35+08:00">2019-04-19</time>
+              <time title="Created: 2019-04-19 12:26:35" itemprop="dateCreated datePublished" datetime="2019-04-19T12:26:35+08:00">2019-04-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-20 00:13:13" itemprop="dateModified" datetime="2019-04-20T00:13:13+08:00">2019-04-20</time>
               
             
           </span>
@@ -416,7 +428,7 @@ loss =& style\_weight * style\_loss(combination\_image, style\_reference) \\
 <p><img src="/2019/数据可视化课设一：中国美展图片相似度检测/9D700730-ED2C-4E79-9937-CAAE814237CC.png" alt="e95d18a86584aed44490643cad12cbf6"><br>通过上面的方法，我们可以进行美术作品抄袭检测，做法就是将待检测的作品与美展图库中的图像做相似度检测，然后得到图库中图片的相似度顺序，根据这个顺序排序，就能得到与检测图像最相似最高的几个作品。最后由专家进行判断该作品与是否抄袭了图库中的作品。</p>
 <h4 id="4-测试"><a href="#4-测试" class="headerlink" title="4. 测试"></a>4. 测试</h4><p>下面是对网上找的几张图片的检测结果，直观上这些作品和检测图片之间还是挺相似的。<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 1.png" alt="6f87800e7525eb1c05997a34e8e2c9cd"><br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 2.png" alt="63ef1e9f508fdb721307c23a66e29d8e"><br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 3.png" alt="518ac7e8043a348bdfc09eea42b75105"><br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 4.png" alt="e89ee38a636610bb31f78a2bbed193fa"><br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 5.png" alt="2c5bd66bd44548acb1129610ebb06522"></p>
 <p>我们也做了一个Demo, 通过网页展示图库中作品的相似度。 我们计算了图库中每一张图像与其他图像之间的相似度，通过点击图库中图片，就能看到与该作品相似的作品排序了。<br>图库页面：<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/949FF918-A76F-442A-BC9F-30B94BD7B6C0.png" alt="69bf1eb8d1994d6f06e4cdf539af594e"><br>选择其中一张图片，点击，查看相似图像：<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/0E7F7CA6-5C74-4D1E-9B10-A84751B17815.png" alt="feb63dd58bebc37251f157d14ff2c5c7"><br>点击这些图片浏览：<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/BCC73844-408E-4466-A048-A5A92C34350F.png" alt="3c8563f8b5fde2002912cdc6ad4e2eb6"></p>
-<p>Demo地址： <a href="http://szcluster.mmlab.top:8000/style_differ.html" target="_blank" rel="noopener">http://szcluster.mmlab.top:8000/style_differ.html</a><br>该Demo并不会一直挂在服务器上，不过我会把我的代码放在我的github上。<br>github仓库： //todo</p>
+<p>Demo地址： <a href="http://szcluster.mmlab.top:8000/style_differ.html" target="_blank" rel="noopener">http://szcluster.mmlab.top:8000/style_differ.html</a><br>该Demo并不会一直挂在服务器上，不过我会把我的代码放在我的github上。<br>github仓库：<a href="https://github.com/Hopexn/DataVisualizationProj1" target="_blank" rel="noopener">https://github.com/Hopexn/DataVisualizationProj1</a></p>
 
       
     </div>
