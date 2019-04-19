@@ -301,6 +301,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hopexn.github.io/2019/数据可视化课设一：中国美展图片相似度检测/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hopen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hopen's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/数据可视化课设一：中国美展图片相似度检测/" itemprop="url">
+                  数据可视化课设一：中国美展图片相似度检测
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-19 12:26:35 / Modified: 12:49:09" itemprop="dateCreated datePublished" datetime="2019-04-19T12:26:35+08:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1. 背景介绍"></a>1. 背景介绍</h4><p>不久前新闻报道著名画家叶永青抄袭意大利画家的作品，对于抄袭这种做法，我是深恶痛绝的，刚好这次课程设计老师也提供了中国美展的数据集，我主要用到这个数据集里面的一个图像的信息。<br>接下来的部分主要从神经风格迁移的原理和如何将神经风格迁移应用到图片相似度检测这两个方面进行介绍。</p>
+<h4 id="2-神经风格迁移"><a href="#2-神经风格迁移" class="headerlink" title="2. 神经风格迁移"></a>2. 神经风格迁移</h4><p><img src="/2019/数据可视化课设一：中国美展图片相似度检测/0F75E759-2B45-4D2B-8474-44F8FECCABD1.png" alt="b2f8e163b6754bac9c2faabaffa29fd6"><br>神经风格迁移是leonGatys等人在2015年提出的，它能将一张图片的风格转移到另一张图片之中。神经风格迁移的思想和大多数深度学习一致，那就是定义一个损失函数来确定指定想要实现的目标，然后通过优化使损失函数较小，不断接近目标。在神经风格迁移中，作者使用数学的方法定义了“风格”这一概念，他们使用VGG19中卷积层的输出变换得到Gram矩阵来描述图像中的风格特征。相较于只是描述像素与局部特征层面的相对孤立的卷积层特征，经它们变换得到的Gram矩阵则蕴含着这些特征之间相互关系。</p>
+<p>神经风格迁移中需要用到图片的内容特征与风格特征，这些特征来自于VGG19中不同卷积层的输出。其中内容特征可以直接使用高层卷积层的输出，而风格特征则需要对输出的特征做一些变换。转换成Gram矩阵。</p>
+<p>下图为从VGG19中提取内容特征与风格特征的方法， 内容特征用的是’conv5_2’这一层，而风格特征使用了“conv1_1”、“conv2_1”、“conv3_1”、“conv4_1”、“conv5_1”这五层。<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/7962CBDD-9ECC-4243-9AB6-5BC883769DB9.png" alt="8f2ca8626abda11f3c74bfb4bcdd90f4"></p>
+<p>使用上面的方法，我们可以提取图片中的内容特征与风格特征。根据这些特征，我们就能量化两张图片之间的差异，这里直接将两张图片的特征的L2距离作为描述图片差异的值。</p>
+<script type="math/tex; mode=display">style_loss(A, B) = \| A_{style\_feature} - B_{style\_feature} \|</script><script type="math/tex; mode=display">content_loss(A, B) = \| A_{content\_feature} - B_{content\_feature} \|</script><p>神经风格迁移的最终目标是生成的图像与提供内容的图片的内容差异越小越好，与风格参考图像的风格差异越小越好。因此，我们可以将两种差异加权作为损失函数。损失函数定义如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+loss =& style\_weight * style\_loss(combination\_image, style\_reference) \\
+&+ content\_weight * style\_loss(combination\_image, content\_target)
+\end{aligned}</script><p>论文中给的内容权重与风格权重分别是： style_weight=1, content_weight=1e-4。</p>
+<p><img src="/2019/数据可视化课设一：中国美展图片相似度检测/2D7F0A7F-72E7-4C80-945F-8E6E7953A449.png" alt="f29d7366aa8541781d4a9ac88e87ee36"><br>在训练过程中，分别计算内容差异与风格差异，然后计算loss，根据这个loss反向传递调整生成图像。经过多次迭代，生成图像的内容会和内容图片相近，风格也会和风格图像相似。</p>
+<h4 id="3-神经风格迁移在图像相似度上的应用"><a href="#3-神经风格迁移在图像相似度上的应用" class="headerlink" title="3. 神经风格迁移在图像相似度上的应用"></a>3. 神经风格迁移在图像相似度上的应用</h4><p>神经风格迁移使用数学对内容与风格有了量化的描述，并且取得了不错的效果。对于判断两张图片是否相似，我们一般也是从内容与风格两方面入手。<br>因此，我们定义了我们用来描述两张图片差异的loss:</p>
+<script type="math/tex; mode=display">loss(A, B) = content_weight * content_loss(A, B) + style_weight * style_loss(A, B)</script><p><img src="/2019/数据可视化课设一：中国美展图片相似度检测/C6022E3A-6379-40F5-9BDC-510769B2B26A.png" alt="ef4a2bbc1a5d014a07a8190e5a049446"></p>
+<p>使用上面的方法，我们就能对两张图片的相似度进行描述，若$loss(A, B) &lt; loss(A, C)$ 那么我们就可以说B比C更像A。</p>
+<p><img src="/2019/数据可视化课设一：中国美展图片相似度检测/9D700730-ED2C-4E79-9937-CAAE814237CC.png" alt="e95d18a86584aed44490643cad12cbf6"><br>通过上面的方法，我们可以进行美术作品抄袭检测，做法就是将待检测的作品与美展图库中的图像做相似度检测，然后得到图库中图片的相似度顺序，根据这个顺序排序，就能得到与检测图像最相似最高的几个作品。最后由专家进行判断该作品与是否抄袭了图库中的作品。</p>
+<h4 id="4-测试"><a href="#4-测试" class="headerlink" title="4. 测试"></a>4. 测试</h4><p>下面是对网上找的几张图片的检测结果，直观上这些作品和检测图片之间还是挺相似的。<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 1.png" alt="6f87800e7525eb1c05997a34e8e2c9cd"><br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 2.png" alt="63ef1e9f508fdb721307c23a66e29d8e"><br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 3.png" alt="518ac7e8043a348bdfc09eea42b75105"><br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 4.png" alt="e89ee38a636610bb31f78a2bbed193fa"><br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/图片 5.png" alt="2c5bd66bd44548acb1129610ebb06522"></p>
+<p>我们也做了一个Demo, 通过网页展示图库中作品的相似度。 我们计算了图库中每一张图像与其他图像之间的相似度，通过点击图库中图片，就能看到与该作品相似的作品排序了。<br>图库页面：<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/949FF918-A76F-442A-BC9F-30B94BD7B6C0.png" alt="69bf1eb8d1994d6f06e4cdf539af594e"><br>选择其中一张图片，点击，查看相似图像：<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/0E7F7CA6-5C74-4D1E-9B10-A84751B17815.png" alt="feb63dd58bebc37251f157d14ff2c5c7"><br>点击这些图片浏览：<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/BCC73844-408E-4466-A048-A5A92C34350F.png" alt="3c8563f8b5fde2002912cdc6ad4e2eb6"></p>
+<p>Demo地址： <a href="http://szcluster.mmlab.top:8000/style_differ.html" target="_blank" rel="noopener">http://szcluster.mmlab.top:8000/style_differ.html</a><br>该Demo并不会一直挂在服务器上，不过我会把我的代码放在我的github上。<br>github仓库： //todo</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hopexn.github.io/2019/强化学习总结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1549,7 +1707,7 @@ v &= R + \gamma P v \\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1801,6 +1959,8 @@ v &= R + \gamma P v \\
     
       
         
+      
+    
       
     
       
