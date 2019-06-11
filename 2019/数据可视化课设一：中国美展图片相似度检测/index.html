@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://hopexn.github.io/2019/数据可视化课设一：中国美展图片相似度检测/949FF918-A76F-442A-BC9F-30B94BD7B6C0.png">
 <meta property="og:image" content="http://hopexn.github.io/2019/数据可视化课设一：中国美展图片相似度检测/0E7F7CA6-5C74-4D1E-9B10-A84751B17815.png">
 <meta property="og:image" content="http://hopexn.github.io/2019/数据可视化课设一：中国美展图片相似度检测/BCC73844-408E-4466-A048-A5A92C34350F.png">
-<meta property="og:updated_time" content="2019-06-11T03:22:09.019Z">
+<meta property="og:updated_time" content="2019-06-11T03:24:29.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据可视化课设一：中国美展图片相似度检测">
 <meta name="twitter:description" content="1. 背景介绍不久前新闻报道著名画家叶永青抄袭意大利画家的作品，对于抄袭这种做法，我是深恶痛绝的，刚好这次课程设计老师也提供了中国美展的数据集，我主要用到这个数据集里面的一个图像的信息。本文主要从神经风格迁移的原理和如何将神经风格迁移应用到图片相似度检测这两个方面进行介绍。 2. 神经风格迁移神经风格迁移是leonGatys等人在2015年提出的，它能将一张图片的风格转移到另一张图片之中。神经风格">
@@ -377,7 +377,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 11:22:09" itemprop="dateModified" datetime="2019-06-11T11:22:09+08:00">2019-06-11</time>
+                <time title="Modified: 2019-06-11 11:24:29" itemprop="dateModified" datetime="2019-06-11T11:24:29+08:00">2019-06-11</time>
               
             
           </span>
@@ -415,10 +415,10 @@
 <p>神经风格迁移中需要用到图片的内容特征与风格特征，这些特征来自于VGG19中不同卷积层的输出。其中内容特征可以直接使用高层卷积层的输出，而风格特征则需要对输出的特征做一些变换。转换成Gram矩阵。</p>
 <p>下图为从VGG19中提取内容特征与风格特征的方法， 内容特征用的是’conv5_2’这一层，而风格特征使用了“conv1_1”、“conv2_1”、“conv3_1”、“conv4_1”、“conv5_1”这五层。<br><img src="/2019/数据可视化课设一：中国美展图片相似度检测/7962CBDD-9ECC-4243-9AB6-5BC883769DB9.png" alt="8f2ca8626abda11f3c74bfb4bcdd90f4"></p>
 <p>使用上面的方法，我们可以提取图片中的内容特征与风格特征。根据这些特征，我们就能量化两张图片之间的差异，这里直接将两张图片的特征的L2距离作为描述图片差异的值。</p>
-<script type="math/tex; mode=display">style_loss(A, B) = \| A_{style\_feature} - B_{style\_feature} \|</script><script type="math/tex; mode=display">content_loss(A, B) = \| A_{content\_feature} - B_{content\_feature} \|</script><p>神经风格迁移的最终目标是生成的图像与提供内容的图片的内容差异越小越好，与风格参考图像的风格差异越小越好。因此，我们可以将两种差异加权作为损失函数。损失函数定义如下：</p>
+<script type="math/tex; mode=display">style\_loss(A, B) = \| A_{style\_feature} - B_{style\_feature} \|</script><script type="math/tex; mode=display">content\_loss(A, B) = \| A_{content\_feature} - B_{content\_feature} \|</script><p>神经风格迁移的最终目标是生成的图像与提供内容的图片的内容差异越小越好，与风格参考图像的风格差异越小越好。因此，我们可以将两种差异加权作为损失函数。损失函数定义如下：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-loss =& style\_weight * style\_loss(combination\_image, style\_reference) \\
+total\_loss =& style\_weight * style\_loss(combination\_image, style\_reference) \\
 &+ content\_weight * style\_loss(combination\_image, content\_target)
 \end{aligned}</script><p>论文中给的内容权重与风格权重分别是： style_weight=1, content_weight=1e-4。</p>
 <p><img src="/2019/数据可视化课设一：中国美展图片相似度检测/2D7F0A7F-72E7-4C80-945F-8E6E7953A449.png" alt="f29d7366aa8541781d4a9ac88e87ee36"><br>在训练过程中，分别计算内容差异与风格差异，然后计算loss，根据这个loss反向传递调整生成图像。经过多次迭代，生成图像的内容会和内容图片相近，风格也会和风格图像相似。</p>
