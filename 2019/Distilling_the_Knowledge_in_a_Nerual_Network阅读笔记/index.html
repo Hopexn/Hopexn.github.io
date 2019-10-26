@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="Chinese, English">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -118,7 +118,7 @@
 <meta property="og:locale" content="Chinese, English">
 <meta property="og:image" content="http://hopexn.github.io/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/E31A4DA2-4EF7-4C2C-A50B-6FEAB37F6627.jpg">
 <meta property="og:image" content="http://hopexn.github.io/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/1552915299546.jpg">
-<meta property="og:updated_time" content="2019-03-18T14:43:07.000Z">
+<meta property="og:updated_time" content="2019-06-30T08:16:09.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Distilling the Knowledge in a Nerual Network阅读笔记">
 <meta name="twitter:description" content="摘要： 在机器学习中，集成学习的方法是提高模型表现力的一种常用方法，它通过在同一个数据集上训练多个模型并将这些模型的结果综合起来进行预测与分类。然而，集成学习的方法产生的模型巨大，需要消耗大量的计算资源，不利于部署。对于上述的问题，一种解决方案是使用知识蒸馏，将大而笨重的模型中的知识转移到小模型上。  1. 背景介绍在机器学习中，训练与部署的目标并不相同，训练的目标是从数据集的大量冗余信息中提取出">
@@ -179,7 +179,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="Chinese, English">
+<body itemscope itemtype="http://schema.org/WebPage" lang="Chinese, English">
 
   
   
@@ -189,7 +189,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -303,20 +303,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hopexn.github.io/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hopen">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Hopen's Blog">
     </span>
 
@@ -350,12 +350,24 @@
                 
               
 
-              <time title="Created: 2019-03-18 22:10:49 / Modified: 22:43:07" itemprop="dateCreated datePublished" datetime="2019-03-18T22:10:49+08:00">2019-03-18</time>
+              <time title="Created: 2019-03-18 22:10:49" itemprop="dateCreated datePublished" datetime="2019-03-18T22:10:49+08:00">2019-03-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-30 16:16:09" itemprop="dateModified" datetime="2019-06-30T16:16:09+08:00">2019-06-30</time>
               
             
           </span>
@@ -372,7 +384,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/论文阅读/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文阅读/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a></span>
 
                 
                 
@@ -410,14 +422,14 @@
 <hr>
 <h2 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1. 背景介绍"></a>1. 背景介绍</h2><p>在机器学习中，训练与部署的目标并不相同，训练的目标是从数据集的大量冗余信息中提取出有效信息，部署则是将训练好的模型分发给用户使用。为了尽可能地从数据集中提取有效信息，训练可以不计算力与存储的成本，得到一个效果尽可能好的模型。然而，这种方法训练出来的模型常常是笨拙的，并且它们在使用过程中需要消耗大量算力，不利于部署。</p>
 <p>对此，我们需要将大模型压缩成利于部署的小模型。我们可以从大模型中提取出可用信息，将其存放在小模型中，这种方法我们称之为“知识蒸馏”。为了获取大模型的泛化能力，小模型在训练过程中可以利用大模型产生的每个类别的概率作为“软目标”。相较于硬目标（样本标签），软目标含有更多有效的信息，例如一张马的图片的输入产生的软目标不仅包含该图片是马的概率，同时也包含着其他类别的概率，这些概率在一定程度上可以表示不同类别之间的相似程度，例如与汽车相比，驴与马更像，因此在软目标中驴这一分类的概率应该大于汽车的概率。使用软目标用于小模型中梯度的计算可以让小模型获得大模型相近的泛化能力。此外，在训练过程中可以设置较大的学习率，显著提高训练的速度。</p>
-<p><img src="/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/E31A4DA2-4EF7-4C2C-A50B-6FEAB37F6627.jpg" alt=""></p>
+<p><img src="/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/E31A4DA2-4EF7-4C2C-A50B-6FEAB37F6627.jpg" alt></p>
 <hr>
 <h2 id="2-知识蒸馏原理"><a href="#2-知识蒸馏原理" class="headerlink" title="2. 知识蒸馏原理"></a>2. 知识蒸馏原理</h2><p>在神经网络中，输出层将每个类别的“分对数”通过softmax转化为概率。</p>
 <p>下面是添加温度T后梯度的计算：</p>
 <script type="math/tex; mode=display">q_i = \frac{e^{z_i/T}}{\sum_{j} e^{z_j/T}}</script><script type="math/tex; mode=display">\frac{\partial C}{\partial z_i} = \frac{1}{T}(q_i - p_i) = \frac{1}{T} (\frac{e^{z_i / T}}{\sum_j{e^{z_j / T}}} - \frac{e^{v_i / T}}{\sum_j{e^{v_j / T}}})</script><script type="math/tex; mode=display">\frac{\partial C}{\partial z_i} \approx \frac{1}{T} (\frac{1 + z_i / T}{N + \sum_j z_j / T} - \frac{1 + v_i / T}{N + \sum_j v_j / T})</script><script type="math/tex; mode=display">\frac{\partial C}{\partial z_i} \approx \frac{1}{NT^2}(z_i - v_i)</script><p>其中T表示温度，温度越高，各类别的概率分布越平缓。</p>
-<p>为了将大模型中的数据迁移到小模型中，最简单的方法就是将温度T设得很高，然后每次训练将大模型输出的概率结果作为软目标用于小模型的训练中。当训练结束后，在使用模型时，再将温度T设置为1。</p>
+<p>为了将大模型中的数据迁移到小模型中，一种最简单的方法就是将温度T设得很高，然后每次训练将大模型输出的概率结果作为软目标用于小模型的训练中。当训练结束后，在使用模型预测时，再将温度T设置为1。</p>
 <p>另一种方法则是使用两个目标，硬目标与软目标。硬目标是训练样本的标签，软目标则是训练好的大模型的概率输出。该方法将硬目标与软目标通过一定的比例混合，得到混合目标结果，并以此计算loss。在混合过程中，硬目标的权重较低时模型的效果较好。</p>
-<p><img src="/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/1552915299546.jpg" alt=""></p>
+<p><img src="/2019/Distilling_the_Knowledge_in_a_Nerual_Network阅读笔记/1552915299546.jpg" alt></p>
 <p>//TODO</p>
 <h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p>[1] Hinton, Geoffrey, Oriol Vinyals, and Jeff Dean. “Distilling the knowledge in a neural network.” arXiv preprint arXiv:1503.02531 (2015).<br>[2] 如何理解soft target这一做法？ - YJango的回答 - 知乎 <a href="https://www.zhihu.com/question/50519680/answer/136406661" target="_blank" rel="noopener">https://www.zhihu.com/question/50519680/answer/136406661</a></p>
 
@@ -522,7 +534,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Hopen">
             
@@ -537,7 +549,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -552,9 +564,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -577,9 +587,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -658,7 +666,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> v3.9.0</div>
 
 
 
