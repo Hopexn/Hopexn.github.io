@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Hopen&#39;s Blog">
 <meta property="og:description" content="一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;JupyterNotebook作为一个Python开发神器，我们可以通过Web端远程编写与调试程序。然而，一些服务器被部署在局域网中，它们往往只开放了ssh的端口用于访问，其他程序的端口却因NAT而被阻断。因此，若要在这种服务器上使用JupyterNotebook就需要做端口映">
 <meta property="og:locale" content="Chinese, English">
-<meta property="og:updated_time" content="2019-06-27T10:38:36.150Z">
+<meta property="og:updated_time" content="2020-09-18T05:52:07.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH端口代理技巧">
 <meta name="twitter:description" content="一、使用SSH端口映射解决无法远程使用JupyterNotebook的问题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;JupyterNotebook作为一个Python开发神器，我们可以通过Web端远程编写与调试程序。然而，一些服务器被部署在局域网中，它们往往只开放了ssh的端口用于访问，其他程序的端口却因NAT而被阻断。因此，若要在这种服务器上使用JupyterNotebook就需要做端口映">
@@ -364,7 +364,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-27 18:38:36" itemprop="dateModified" datetime="2019-06-27T18:38:36+08:00">2019-06-27</time>
+                <time title="Modified: 2020-09-18 13:52:07" itemprop="dateModified" datetime="2020-09-18T13:52:07+08:00">2020-09-18</time>
               
             
           </span>
@@ -406,7 +406,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p &lt;ssh_port&gt; &lt;username&gt;@&lt;server_ip&gt; -L &lt;local_port&gt;:localhost:&lt;server_port&gt;</span><br></pre></td></tr></table></figure>
 <p>例如, 若ssh端口是8000, 我们要将服务器的4567端口映射到本地，可以用下面的命令：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 8000 hopen@mmlab -L 4567:localhost:4567</span><br></pre></td></tr></table></figure>
-<p>连接上后，通过<a href="http://localhost:4567即可访问远程的JupyterNotebook了" target="_blank" rel="noopener">http://localhost:4567即可访问远程的JupyterNotebook了</a></p>
+<p>连接上后，通过 <a href="http://localhost:4567" target="_blank" rel="noopener">http://localhost:4567</a> 即可访问远程的JupyterNotebook了</p>
 <h2 id="二、服务器端网络加速"><a href="#二、服务器端网络加速" class="headerlink" title="二、服务器端网络加速"></a>二、服务器端网络加速</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;作为研究生，大家平时学习与科研需要常常访问国外的网站，都会自备梯子加速。有的时候，我们在服务器端运行程序时需要从国外网站下载一些数据集，若没有梯子加速，速度会非常感人。然而，在服务器上撘一个梯子太麻烦，我们并不需要所有服务器的流量都走代理，而是只希望要用的时候开启。这里，可以使用ssh将本地的代理的端口映射到服务器，让服务器的流量通过ssh转到本地，在通过梯子连接到国外。</p>
 <h3 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h3><p>首先在ssh连接时开启端口映射，添加-R参数</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p &lt;ssh_port&gt; &lt;username&gt;@&lt;server_ip&gt; -R &lt;server_port&gt;:localhost:&lt;local_port&gt;</span><br></pre></td></tr></table></figure>
